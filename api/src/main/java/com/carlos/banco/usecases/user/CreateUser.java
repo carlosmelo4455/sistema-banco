@@ -11,7 +11,7 @@ public class CreateUser {
     @Autowired
     private UserRepository userRepository;
 
-    public void create(UserDTO userDTO) {
+    public void execute(UserDTO userDTO) {
         if (userRepository.findByCpf(userDTO.cpf()).isPresent()) {
             throw new RuntimeException("CPF já cadastrado");
         }else {
