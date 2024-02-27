@@ -1,6 +1,5 @@
 package com.carlos.banco.model;
 
-import com.carlos.banco.entities.Account;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

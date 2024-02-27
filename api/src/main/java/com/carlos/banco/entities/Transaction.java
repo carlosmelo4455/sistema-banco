@@ -19,4 +19,10 @@ public class Transaction {
     private Account sourceAccount;
     private Account targetAccount;
 
+public Transaction(String description, Double amount, Account sourceAccount, Account targetAccount) {
+        this.description = description;
+        this.amount = amount;
+        this.sourceAccount = sourceAccount;
+        this.targetAccount = targetAccount;
+    }
 }
