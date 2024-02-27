@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface AccountRepository extends JpaRepository<AccountModel, Long> {
     AccountModel findByAccountNumberAndAccountDigit(String accountNumber, String accountDigit);
-    List<AccountModel> findByUserAndAccountType(UserModel user, AccountType accountType);
+    AccountModel findByUserAndAccountType(UserModel user, AccountType accountType);
+    boolean existsByUserAndAccountType(UserModel user, AccountType accountType);
 }

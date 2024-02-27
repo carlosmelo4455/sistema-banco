@@ -24,6 +24,7 @@ public class AccountModel {
     @JoinColumn(name = "user_id")
     private UserModel user;
 
+    @Column(unique = true)
     private String accountNumber;
     private String accountDigit;
     private double balance;

@@ -1,7 +1,6 @@
 package com.carlos.banco.entities;
 
 import com.carlos.banco.enums.AccountType;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +21,31 @@ public class Account {
     private AccountType accountType;
     private List<Transaction> Transactions;
 
-    public void generateAccountNumber() {
+    private Account(User accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    public static Account createNewAccount(User user, AccountType accountType) {
+        Account account = new Account(user);
+        account.generateAccountNumber();
+        account.setBalance(0.0);
+        account.setAccountType(accountType);
+        return account;
+    }
+
+    private void generateAccountNumber() {
         this.accountNumber = String.valueOf((int) (Math.random() * 1000000));
         this.AccountDigit = String.valueOf((int) (Math.random() * 10));
+    }
+
+    public void deposit(double value) {
+        this.balance += value;
+    }
+
+    public void withdrawal(double value) {
+        if (this.balance < value) {
+            throw new IllegalArgumentException("Saldo insuficiente para saque");
+        }
+        this.balance -= value;
     }
 }
