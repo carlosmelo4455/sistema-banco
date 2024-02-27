@@ -10,7 +10,9 @@ import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
 import config.MapperConfig;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateAccount {
 
     private final AccountRepository accountRepository;

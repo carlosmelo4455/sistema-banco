@@ -1,6 +1,5 @@
 package com.carlos.banco.usecases.account;
 
-import com.carlos.banco.DTO.account.DepositBalanceDTO;
 import com.carlos.banco.DTO.account.WithdrawalBalanceDTO;
 import com.carlos.banco.entities.Account;
 import com.carlos.banco.enums.AccountType;
@@ -10,7 +9,9 @@ import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
 import config.MapperConfig;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WithdrawalBalance {
     private final AccountRepository accountRepository;
     private final ModelMapper mapper = new MapperConfig().modelMapper();

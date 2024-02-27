@@ -1,6 +1,5 @@
 package com.carlos.banco.usecases.account;
 
-import com.carlos.banco.DTO.account.DepositBalanceDTO;
 import com.carlos.banco.DTO.account.TransferBalanceDTO;
 import com.carlos.banco.entities.Account;
 import com.carlos.banco.entities.Transaction;
@@ -13,7 +12,9 @@ import com.carlos.banco.repository.TransactionRepository;
 import com.carlos.banco.repository.UserRepository;
 import config.MapperConfig;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TransferBalance {
 
     private final UserRepository userRepository;
