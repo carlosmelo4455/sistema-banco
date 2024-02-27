@@ -23,7 +23,4 @@ public class User {
         this.cpf = cpf;
         this.password = password;
     }
-    public UserModel toModel() {
-        return new UserModel(this.name, this.phone, this.cpf, this.password);
-    }
 }

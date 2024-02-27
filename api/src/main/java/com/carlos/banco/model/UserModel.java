@@ -1,6 +1,6 @@
 package com.carlos.banco.model;
 
-import com.carlos.banco.DTO.UserDTO;
+import com.carlos.banco.DTO.user.RegisterUserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,13 +22,4 @@ public class UserModel {
     private String cpf;
     private String password;
 
-    public UserModel(String name, String phone, String cpf, String password) {
-        this.name = name;
-        this.phone = phone;
-        this.cpf = cpf;
-        this.password = password;
-    }
-    public UserDTO toDTO() {
-        return new UserDTO(this.name, this.phone, this.cpf, this.password);
-    }
 }
