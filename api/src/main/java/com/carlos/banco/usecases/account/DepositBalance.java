@@ -7,7 +7,6 @@ import com.carlos.banco.model.AccountModel;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
-import config.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -15,11 +14,12 @@ import org.springframework.stereotype.Component;
 public class DepositBalance {
 
     private final AccountRepository accountRepository;
-    private final ModelMapper mapper = new MapperConfig().modelMapper();
+    private final ModelMapper mapper;
     private final UserRepository userRepository;
 
-    public DepositBalance(AccountRepository accountRepository, UserRepository userRepository) {
+    public DepositBalance(AccountRepository accountRepository, ModelMapper mapper, UserRepository userRepository) {
         this.accountRepository = accountRepository;
+        this.mapper = mapper;
         this.userRepository = userRepository;
     }
 

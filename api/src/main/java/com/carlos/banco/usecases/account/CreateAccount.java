@@ -8,19 +8,18 @@ import com.carlos.banco.model.AccountModel;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
-import config.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CreateAccount {
-
     private final AccountRepository accountRepository;
-    private final ModelMapper mapper = new MapperConfig().modelMapper();
+    private final ModelMapper mapper;
     private final UserRepository userRepository;
 
-    public CreateAccount(AccountRepository accountRepository, UserRepository userRepository) {
+    public CreateAccount(AccountRepository accountRepository, ModelMapper mapper, UserRepository userRepository) {
         this.accountRepository = accountRepository;
+        this.mapper = mapper;
         this.userRepository = userRepository;
     }
 
@@ -34,4 +33,3 @@ public class CreateAccount {
         accountRepository.save(mapper.map(newAccount, AccountModel.class));
     }
 }
-

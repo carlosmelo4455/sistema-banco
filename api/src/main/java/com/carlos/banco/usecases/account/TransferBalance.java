@@ -10,7 +10,6 @@ import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.TransactionRepository;
 import com.carlos.banco.repository.UserRepository;
-import config.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +19,13 @@ public class TransferBalance {
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
-    private final ModelMapper mapper = new MapperConfig().modelMapper();
+    private final ModelMapper mapper;
 
-    public TransferBalance(AccountRepository accountRepository, UserRepository userRepository, TransactionRepository transactionRepository) {
+    public TransferBalance(AccountRepository accountRepository, UserRepository userRepository, TransactionRepository transactionRepository, ModelMapper mapper) {
         this.accountRepository = accountRepository;
         this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
+        this.mapper = mapper;
     }
 
     public void execute(TransferBalanceDTO transferBalanceDTO) {

@@ -8,7 +8,6 @@ import com.carlos.banco.model.AccountModel;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
-import config.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -16,17 +15,18 @@ import org.springframework.stereotype.Component;
 public class RegisterUser {
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
-    private final ModelMapper mapper = new MapperConfig().modelMapper();
-    private RegisterUser(UserRepository userRepository, AccountRepository accountRepository) {
+    private final ModelMapper mapper;
+
+    private RegisterUser(UserRepository userRepository, AccountRepository accountRepository, ModelMapper mapper) {
         this.userRepository = userRepository;
         this.accountRepository = accountRepository;
-
+        this.mapper = mapper;
     }
 
     public void execute(RegisterUserDTO userDTO) {
         if (userRepository.findByCpf(userDTO.getCpf()).isPresent()) {
             throw new RuntimeException("CPF já cadastrado");
-        }else {
+        } else {
             User user = mapper.map(userDTO, User.class);
             Account account = Account.createNewAccount(user, AccountType.Corrente);
             accountRepository.save(mapper.map(account, AccountModel.class));

@@ -2,7 +2,6 @@ package com.carlos.banco.usecases.transactions;
 
 import com.carlos.banco.DTO.transaction.AllTransactionsDTO;
 import com.carlos.banco.repository.TransactionRepository;
-import config.MapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +12,12 @@ import java.util.stream.Collectors;
 public class ShowTransactions {
 
     private final TransactionRepository transactionRepository;
+    private final ModelMapper mapper;
 
-    private final ModelMapper mapper = new MapperConfig().modelMapper();
-
-    public ShowTransactions(TransactionRepository transactionRepository) {
+    public ShowTransactions(TransactionRepository transactionRepository, ModelMapper mapper) {
         this.transactionRepository = transactionRepository;
+        this.mapper = mapper;
+
     }
 
     public List<AllTransactionsDTO> execute() {
