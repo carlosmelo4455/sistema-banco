@@ -8,20 +8,15 @@ import com.carlos.banco.model.AccountModel;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-
+@RequiredArgsConstructor
 @Component
 public class CreateAccount {
     private final AccountRepository accountRepository;
     private final ModelMapper mapper;
     private final UserRepository userRepository;
-
-    public CreateAccount(AccountRepository accountRepository, ModelMapper mapper, UserRepository userRepository) {
-        this.accountRepository = accountRepository;
-        this.mapper = mapper;
-        this.userRepository = userRepository;
-    }
 
     public void execute(NewAccountDTO newAccountDTO) {
         UserModel existingUserModel = userRepository.findById(newAccountDTO.getUserId()).orElseThrow();

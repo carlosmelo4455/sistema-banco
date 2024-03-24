@@ -4,18 +4,16 @@ import com.carlos.banco.DTO.user.UpdateUserDTO;
 import com.carlos.banco.entities.User;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class UpdateUser {
 
     private final UserRepository userRepository;
     private final ModelMapper mapper;
-    public UpdateUser(UserRepository userRepository,ModelMapper mapper) {
-        this.userRepository = userRepository;
-        this.mapper = mapper;
-    }
 
     public void execute(Long usuarioID, UpdateUserDTO userDTO) {
         UserModel existingUserModel = userRepository.findById(usuarioID).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));

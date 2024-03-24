@@ -19,15 +19,20 @@ public class AccountModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
 
     @Column(unique = true)
     private String accountNumber;
+
     private String accountDigit;
+
     private double balance;
+
     private AccountType accountType;
+
     @OneToMany(mappedBy = "sourceAccount")
     private List<TransactionModel> sourceTransactions;
 

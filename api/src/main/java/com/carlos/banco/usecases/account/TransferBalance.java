@@ -10,9 +10,11 @@ import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.TransactionRepository;
 import com.carlos.banco.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class TransferBalance {
 
@@ -20,13 +22,6 @@ public class TransferBalance {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final ModelMapper mapper;
-
-    public TransferBalance(AccountRepository accountRepository, UserRepository userRepository, TransactionRepository transactionRepository, ModelMapper mapper) {
-        this.accountRepository = accountRepository;
-        this.userRepository = userRepository;
-        this.transactionRepository = transactionRepository;
-        this.mapper = mapper;
-    }
 
     public void execute(TransferBalanceDTO transferBalanceDTO) {
         UserModel existingUserModel = userRepository.findById(transferBalanceDTO.getUserId()).orElseThrow();

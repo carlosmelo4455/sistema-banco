@@ -8,20 +8,16 @@ import com.carlos.banco.model.AccountModel;
 import com.carlos.banco.model.UserModel;
 import com.carlos.banco.repository.AccountRepository;
 import com.carlos.banco.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class RegisterUser {
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
     private final ModelMapper mapper;
-
-    private RegisterUser(UserRepository userRepository, AccountRepository accountRepository, ModelMapper mapper) {
-        this.userRepository = userRepository;
-        this.accountRepository = accountRepository;
-        this.mapper = mapper;
-    }
 
     public void execute(RegisterUserDTO userDTO) {
         if (userRepository.findByCpf(userDTO.getCpf()).isPresent()) {
