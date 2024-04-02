@@ -18,28 +18,20 @@ public class UserController {
     private final RegisterUser registerUser;
     private final UpdateUser updateUser;
     private final DeleteUser deleteUser;
-//    private final LoginUser loginUser;
 
-    @PostMapping("/create")
+    @PostMapping()
     public ResponseEntity<Void> createUser(@RequestBody RegisterUserDTO registerUserDTO){
         registerUser.execute(registerUserDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> updateUser(@RequestBody UpdateUserDTO updateUserDTO, @PathVariable Long id){
         updateUser.execute(id,updateUserDTO);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         deleteUser.execute(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-//    @PostMapping("/login")
-//    public ResponseEntity<Void> loginUser(@RequestBody LoginDTO userDTO){
-//        loginUser.execute(userDTO);
-//        return ResponseEntity.status(HttpStatus.OK).build();
-//    }
-
-
 }

@@ -1,19 +1,15 @@
 package com.carlos.banco.DTO.user;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class RegisterUserDTO{
-    private final String name;
-    private final String phone;
-    private final String cpf;
-    private final String password;
-
-    public RegisterUserDTO(String name, String phone, String cpf, String password) {
-        this.name = name;
-        this.phone = phone;
-        this.cpf = cpf;
-        this.password = password;
-    }
-
+    private String name;
+    private String phone;
+    private String cpf;
+    private String password;
 }

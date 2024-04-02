@@ -17,7 +17,7 @@ public class Account {
     private User accountHolder;
     private String accountNumber;
     private String AccountDigit;
-    private Double balance;
+    private Double balance = 0.0;
     private AccountType accountType;
     private List<Transaction> Transactions;
 
